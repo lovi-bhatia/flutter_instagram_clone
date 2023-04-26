@@ -139,7 +139,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       _emailController.text,
                       _passwordController.text,
                       _usernameController.text,
-                      _bioController.text);
+                      _bioController.text,
+                      _image!);
                   print(res);
                 },
                 child: Container(
