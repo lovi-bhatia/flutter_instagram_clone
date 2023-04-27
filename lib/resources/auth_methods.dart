@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -47,6 +48,12 @@ class AuthMethods {
       }
     } catch (err) {
       res = err.toString();
+    } on FirebaseAuthException catch (err) {
+      if (err.code == 'invalid-email') {
+        res = 'The email is badly formatted';
+      } else if (err.code == 'weak-password') {
+        res = 'weak password';
+      }
     }
     return res;
   }
